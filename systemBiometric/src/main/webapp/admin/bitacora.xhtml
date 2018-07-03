@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+	<title>Bitacora</title>
+	<meta name="content-type" content="text/html; charset=UTF-8" />
+</h:head>
+
+<h:body>
+
+	<ui:composition
+		template="/WEB-INF/templateAdmin/template.xhtml">
+		<ui:define name="body">
+			<!--  <h1>Bitacora</h1> -->
+
+			<h:form id="form">
+				<p:growl />
+
+				<p:dataTable paginator="true" stickyHeader="true" var="usuario" value="#{bitacoraVista.losUsuario}">
+
+					<p:column headerText="Cedula">
+						<h:outputText value="#{usuario.usuCedula}" />
+					</p:column>
+					<p:column headerText="Primer Nombre">
+						<h:outputText value="#{usuario.usuPrimernombre}" />
+					</p:column>
+					<p:column headerText="Primer Apellido">
+						<h:outputText value="#{usuario.usuPrimerapellido}" />
+					</p:column>
+					<p:column headerText="IdBitacora">
+						<h:outputText value="#{usuario.bitacora.bitaId}" />
+					</p:column>
+
+					<p:column style="width:32px;text-align: center">
+						<p:commandButton oncomplete="PF('bitaDialog').show()"
+							icon="ui-icon-search" title="Consultar" update=":form:carDetail">
+
+							<f:setPropertyActionListener value="#{usuario}"
+								target="#{bitacoraVista.selectedUsuario}" />
+						</p:commandButton>
+						<!-- <p:commandButton oncomplete="PF('bita2Dialog').show()"
+							 title="Consultar" update=":form:bitaDetail" value="consultar2">							
+						</p:commandButton> -->
+					</p:column>
+				</p:dataTable>
+
+				<p:dialog header="Bitacora Info" widgetVar="bitaDialog" modal="true"
+					showEffect="fade" hideEffect="fade" resizable="false">
+					<p:outputPanel id="carDetail" style="text-align:center;">
+						<!-- <p:dataTable id="cars1" var="car" <!value="#{dtEditView.cars1}" editable="true" style="margin-bottom:20px"> -->
+						<p:commandButton value="Calcular Total horas" binding="#{bitacoraVista.btnCalcularHoras}" action="#{btnCalcularHorasTrabajadasAction}" update="bita1" />						
+						<p:dataTable id="bita1" editable="true" style="margin-bottom:20px"
+							var="bita" value="#{bitacoraVista.lasHorasTrabajadas}">
+							
+							<f:facet name="header">
+            					<p:outputLabel id="tt" binding="#{bitacoraVista.totalHoras}" />
+        					</f:facet>
+							<!-- 
+ 				    	  	<p:ajax event="rowEdit" listener="#{dtEditView.onRowEdit}" update=":form:msgs" />
+      				 		<p:ajax event="rowEditCancel" listener="#{dtEditView.onRowCancel}" update=":form:msgs" />
+ 
+  						-->
+  							<p:column headerText="Marca">
+								<h:outputText value="Ingreso" />
+							</p:column>
+							<p:column headerText="FechaIngreso">
+								<h:outputText value="#{bita.fechaingreso}" />
+							</p:column>
+							<p:column headerText="HoraIngreso">
+								<h:outputText value="#{bita.horaingreso}" />
+							</p:column>
+							<p:column headerText="Marca">
+								<h:outputText value="Salida"/>
+							</p:column>
+							<p:column headerText="FechaSalida">
+								<h:outputText value="#{bita.fechasalida}" />
+							</p:column>
+							<p:column headerText="HoraSalida">
+								<h:outputText value="#{bita.horasalida}" />
+							</p:column>
+							
+							<p:column headerText="HorasTrabajadas">
+								<h:outputText value="#{bita.horasTrabajadas}" />
+							</p:column>
+
+						</p:dataTable>
+					</p:outputPanel>
+				</p:dialog>
+				
+				<!-- consultar por dias trabajados -->
+				<p:dialog header="Bitacora Info" widgetVar="bita2Dialog" modal="true"
+					showEffect="fade" hideEffect="fade" resizable="false">
+					<p:outputPanel id="bitaDetail" style="text-align:center;">
+						<!-- <p:dataTable id="cars1" var="car" <!value="#{dtEditView.cars1}" editable="true" style="margin-bottom:20px"> -->
+						<p:dataTable id="bita2" editable="true" style="margin-bottom:20px"
+							var="bita" value="#{bitacoraVista.lasHorasTrabajadasDias}">
+							<!-- 
+ 				    	  	<p:ajax event="rowEdit" listener="#{dtEditView.onRowEdit}" update=":form:msgs" />
+      				 		<p:ajax event="rowEditCancel" listener="#{dtEditView.onRowCancel}" update=":form:msgs" />
+ 
+  						-->
+  							<p:column headerText="Marca">
+								<h:outputText value="Ingreso" />
+							</p:column>
+							<p:column headerText="FechaIngreso">
+								<h:outputText value="#{bita.fechaingreso}" />
+							</p:column>
+							<p:column headerText="HoraIngreso">
+								<h:outputText value="#{bita.horaingreso}" />
+							</p:column>
+							<p:column headerText="Marca">
+								<h:outputText value="Salida"/>
+							</p:column>
+							<p:column headerText="FechaSalida">
+								<h:outputText value="#{bita.fechasalida}" />
+							</p:column>
+							<p:column headerText="HoraSalida">
+								<h:outputText value="#{bita.horasalida}" />
+							</p:column>
+							
+							<p:column headerText="HorasTrabajadas">
+								<h:outputText value="#{bita.horasTrabajadas}" />
+							</p:column>
+
+						</p:dataTable>
+					</p:outputPanel>
+				</p:dialog>
+				
+				
+			</h:form>
+
+			<f:view>
+			</f:view>
+		</ui:define>
+	</ui:composition>
+
+</h:body>
+</html>

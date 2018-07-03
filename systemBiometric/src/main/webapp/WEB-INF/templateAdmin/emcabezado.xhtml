@@ -1,0 +1,34 @@
+<jsp:root jsfc="f:view" xmlns:jsp="http://java.sun.com/JSP/Page"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jstl/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:fn="http://java.sun.com/jsp/jstl/functions">
+
+	<html>
+<body>
+	<f:view>
+		<ui:composition>
+			<h1>Sistema Biometrico</h1>
+			<h:form>
+				<p:menubar>
+					<p:menuitem value="Usuarios" url="/admin/formUsuario.xhtml" />
+					<p:menuitem value="Tipo De Usuario" url="/admin/formTipoUsuario.xhtml" />
+					<p:menuitem value="Bitacoras" url="/admin/bitacora.xhtml" />
+					<p:menuitem value="Reportes" url="/admin/#" />
+					<p:menuitem value="Parametrizar" url="/admin/parametrizacion.xhtml" />
+
+					<f:facet name="options">					
+						<p:button id="btnLogout" icon="ui-icon-extlink" value="Logout" href="/j_spring_security_logout"  />						
+					</f:facet>
+				</p:menubar>
+
+
+			</h:form>
+
+		</ui:composition>
+	</f:view>
+</body>
+	</html>
+</jsp:root>

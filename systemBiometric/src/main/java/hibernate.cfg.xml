@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <property name="hibernate.bytecode.use_reflection_optimizer">false</property>
+        <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
+        <property name="hibernate.connection.password">postgres</property>
+        <property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/systemBiometric</property>
+        <property name="hibernate.connection.username">postgres</property>
+        <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
+        <property name="hibernate.search.autoregister_listeners">false</property>
+        <property name="hibernate.show_sql">true</property>
+        <property name="hibernate.validator.apply_to_ddl">false</property>
+        <mapping resource="co/edu/usbcali/modelo/TipoUsuario.hbm.xml" />
+        <mapping resource="co/edu/usbcali/modelo/Usuario.hbm.xml" />
+        <mapping resource="co/edu/usbcali/modelo/Salida.hbm.xml" />
+        <mapping resource="co/edu/usbcali/modelo/Bitacora.hbm.xml" />
+        <mapping resource="co/edu/usbcali/modelo/UsuarioHuella.hbm.xml" />
+        <mapping resource="co/edu/usbcali/modelo/Ingreso.hbm.xml" />
+        <mapping resource="co/edu/usbcali/modelo/Parametro.hbm.xml" />
+        <mapping resource="co/edu/usbcali/modelo/InoutDaily.hbm.xml" />
+        <mapping resource="co/edu/usbcali/modelo/HuellaDerecha.hbm.xml" />
+        <mapping resource="co/edu/usbcali/modelo/Fotografia.hbm.xml" />
+        <mapping resource="co/edu/usbcali/modelo/HuellaIzquierda.hbm.xml" />
+        
+        <!-- sql -->
+        <mapping resource="co/edu/usbcali/modelo/Sequences.hbm.xml" />
+        <mapping resource="co/edu/usbcali/modelo/Consultas.hbm.xml" />
+        
+        
+    </session-factory>
+</hibernate-configuration>

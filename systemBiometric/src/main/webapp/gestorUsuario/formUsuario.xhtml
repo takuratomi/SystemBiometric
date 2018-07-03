@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+	<title>Gestión de usuarios</title>
+	<meta name="content-type" content="text/html; charset=UTF-8" />
+</h:head>
+
+<h:body>
+	<ui:composition template="/WEB-INF/templateGestorUsuario/template.xhtml">
+		<ui:define name="body">
+			<f:view> 
+
+				<h:form enctype="multipart/form-data">
+					<p:panel header="Gestion de Usuarios" id="pnlUsuario">
+						<p:growl />
+						<h:panelGrid columns="4">
+
+							<p:outputLabel value="Cedula" />
+							<p:inputText id="txtIdentificacion" placeholder="CC"
+								binding="#{usuarioEmpleadoVista.txtIdentificacion}">
+								<p:ajax listener="#{usuarioEmpleadoVista.txtIdListener}"
+									update="pnlUsuario" />
+							</p:inputText>
+
+							<p:outputLabel value="Fecha de nacimiento" />
+							<p:calendar id="calFechaNacimiento"
+								value="#{usuarioEmpleadoVista.txtFechaNacimiento}" effect="fold" />
+
+							<p:outputLabel value="Primer Nombre" />
+							<p:inputText id="txtPrimerNombre"
+								binding="#{usuarioEmpleadoVista.txtPrimerNombre}"
+								placeholder="primer nombre" />
+
+							<p:outputLabel value="Segundo Nombre" />
+							<p:inputText id="txtSegundoNombre"
+								binding="#{usuarioEmpleadoVista.txtSegundoNombre}"
+								placeholder="Segundo nombre si lo tiene" />
+
+							<p:outputLabel value="Primer Apellido" />
+							<p:inputText id="txtPrimerApellido"
+								binding="#{usuarioEmpleadoVista.txtPrimerApellido}"
+								placeholder="primer apellido" />
+
+							<p:outputLabel value="Segundo Apellido" />
+							<p:inputText id="txtSegundoApellido"
+								binding="#{usuarioEmpleadoVista.txtSegundoApellido}"
+								placeholder="Segundo apellido" />
+
+							<p:outputLabel value="Dirección" />
+							<p:inputText id="txtDireccion"
+								binding="#{usuarioEmpleadoVista.txtDireccion}"
+								placeholder="Dirección de vivienda" />
+
+							<p:outputLabel value="Teléfono" />
+							<p:inputText id="txtTelefono"
+								binding="#{usuarioEmpleadoVista.txtTelefono}"
+								placeholder="Teléfono donde se pueda ubicar" />
+
+							<p:outputLabel value="Ciudad" />
+							<p:inputText id="txtCiudad"
+								binding="#{usuarioEmpleadoVista.txtCiudad}"
+								placeholder="Ciudad a la que pertenece" />
+
+							<p:outputLabel id="validIdentificacion"
+								value="Ingreso con identificación" />
+							<p:selectBooleanCheckbox
+								value="#{usuarioEmpleadoVista.validIdentificacion}" />
+
+							<p:outputLabel id="estadoUsuario" value="Activo" />
+							<p:selectBooleanCheckbox
+								binding="#{usuarioEmpleadoVista.schckEstado}"
+								value="#{usuarioEmpleadoVista.estadoUsuario}" disabled="true" />
+
+						</h:panelGrid>
+
+						<h:panelGrid columns="2">
+
+							<p:selectOneMenu id="selectTipoUsu" style="width:150px"
+								binding="#{usuarioEmpleadoVista.somTiposUsuario}">
+								<f:selectItem itemValue="-1"
+									itemLabel="Seleccione tipo de usuario" />
+								<f:selectItems
+									value="#{usuarioEmpleadoVista.losTipoUsuarioItems}" />
+								<p:ajax listener="#{usuarioEmpleadoVista.paswordListener}"
+									update="pwd1,pwd2" />
+							</p:selectOneMenu>
+
+							<h:panelGrid columns="2">
+
+								<h:outputLabel for="pwd1" value="Password: *" />
+								<p:password id="pwd1"
+									binding="#{usuarioEmpleadoVista.txtPasword}" match="pwd2"
+									label="Password " disabled="true" />
+
+								<h:outputLabel for="pwd2" value="Password Confirmación: " />
+								<p:password id="pwd2"
+									binding="#{usuarioEmpleadoVista.txtConfirmPasword}"
+									label="confirmación del password" disabled="true" />
+
+							</h:panelGrid>
+						</h:panelGrid>
+
+						<h:panelGrid columns="4" border="0">
+							<p:commandButton id="btnCrear" value="Crear" ajax="false"
+								binding="#{usuarioEmpleadoVista.btnCrear}"
+								action="#{usuarioEmpleadoVista.btnCrearAction}" disabled="true"
+								update="pnlUsuario" />
+							<p:commandButton id="btnModificar" value="Modificar" ajax="false"
+								binding="#{usuarioEmpleadoVista.btnModificar}"
+								action="#{usuarioEmpleadoVista.btnModificarAction}"
+								disabled="true" update="pnlUsuario" />
+							
+							<p:commandButton id="btnLimpiar" value="Limpiar"
+								binding="#{usuarioEmpleadoVista.btnLimpiar}"
+								action="#{usuarioEmpleadoVista.limpiarAction}" disabled="false"
+								update="pnlUsuario" />
+							<p:commandButton id="btnRegistrarHuella" value="Cargar Archivos"
+								type="button" />
+
+							<p:overlayPanel id="imagePanel" for="btnRegistrarHuella"
+								hideEffect="fade">
+								<h:panelGrid columns="1" border="0">
+									<p:fileUpload value="#{usuarioEmpleadoVista.loadDerImagen}"
+										label="Cargar Huella Derecha" mode="simple" skinSimple="true" />
+									<p:fileUpload value="#{usuarioEmpleadoVista.loadIzImagen}"
+										label="Cargar Huella Izquierda" mode="simple"
+										skinSimple="true" />
+									<p:fileUpload value="#{usuarioEmpleadoVista.loadFotografia}"
+										label="Cargar Fotografia" mode="simple"
+										skinSimple="true" />
+								</h:panelGrid>
+							</p:overlayPanel>
+
+						</h:panelGrid>
+
+					</p:panel>
+
+					<BR />
+					<BR />
+					<p:panel id="pnlListaUsuarios" header="Listado de usuarios">
+					<!-- 
+							<h:panelGrid columns="1" border="0">
+							<p:commandButton id="btnGenerateReport" value="Generar Reporte" />
+						</h:panelGrid>
+					 -->				
+
+						<p:dataTable id="dtClientes" var="cliente" paginator="true"
+							rows="5" value="#{usuarioEmpleadoVista.losUsuario}">
+
+							<p:column headerText="Cedula">
+								<h:outputText value="#{cliente.usuCedula}" />
+							</p:column>
+
+							<p:column headerText="Primer Nombre">
+								<h:outputText value="#{cliente.usuPrimernombre}" />
+							</p:column>
+
+							<p:column headerText="Segundo Nombre">
+								<h:outputText value="#{cliente.usuSegundonombre}" />
+							</p:column>
+
+							<p:column headerText="Primer Apellido">
+								<h:outputText value="#{cliente.usuPrimerapellido}" />
+							</p:column>
+
+							<p:column headerText="Segundo Apellido">
+								<h:outputText value="#{cliente.usuSegundoapellido}" />
+							</p:column>
+
+							<p:column headerText="Tipo Usuario">
+								<h:outputText value="#{cliente.tipoUsuario.tusuNombre}" />
+							</p:column>
+							<p:column headerText="Estado">
+								<h:outputText value="#{cliente.estado}" />
+							</p:column>
+
+							<p:column headerText="Dirección">
+								<h:outputText value="#{cliente.direccion}" />
+							</p:column>
+
+							<p:column headerText="Teléfono">
+								<h:outputText value="#{cliente.telefono}" />
+							</p:column>
+
+							<p:column headerText="Ciudad">
+								<p:outputLabel value="#{cliente.ciudad}" />
+							</p:column>
+
+						</p:dataTable>
+					</p:panel>
+
+				</h:form>
+
+			 </f:view>
+		</ui:define>
+	</ui:composition> 
+
+</h:body>
+</html>

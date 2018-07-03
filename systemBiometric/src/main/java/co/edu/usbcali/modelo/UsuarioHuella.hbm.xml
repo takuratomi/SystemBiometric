@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 14/05/2017 01:16:03 PM by Hibernate Tools 5.1.0.Alpha1 -->
+<hibernate-mapping>
+    <class name="co.edu.usbcali.modelo.UsuarioHuella" table="usuario_huella" schema="public" optimistic-lock="version">
+        <id name="ushuId" type="long">
+            <column name="ushu_id" precision="18" scale="0" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="huellaDerecha" class="co.edu.usbcali.modelo.HuellaDerecha" fetch="select">
+            <column name="hude_id" precision="18" scale="0" not-null="true" />
+        </many-to-one>
+        <many-to-one name="huellaIzquierda" class="co.edu.usbcali.modelo.HuellaIzquierda" fetch="select">
+            <column name="hull_id2" precision="18" scale="0" />
+        </many-to-one>
+        <many-to-one name="usuario" class="co.edu.usbcali.modelo.Usuario" fetch="select">
+            <column name="usu_cedula" precision="18" scale="0" />
+        </many-to-one>
+        <property name="usuCreador" type="string">
+            <column name="usu_creador" length="30" not-null="true" />
+        </property>
+        <property name="usuModificador" type="string">
+            <column name="usu_modificador" length="30" />
+        </property>
+        <property name="fechaCreador" type="date">
+            <column name="fecha_creador" length="13" not-null="true" />
+        </property>
+        <property name="fechaModificador" type="date">
+            <column name="fecha_modificador" length="13" />
+        </property>
+    </class>
+</hibernate-mapping>

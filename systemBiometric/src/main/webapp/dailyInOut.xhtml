@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+	<title>Gestión de usuarios</title>
+	<meta name="content-type" content="text/html; charset=UTF-8" />
+</h:head>
+<h:body>
+
+	<h:form>
+		
+		<!-- <p:panel  id="pnl"> -->
+
+			<p:growl />
+
+			<p:layout style="min-width:400px;min-height:200px;" fullPage="true">
+			
+				<p:layoutUnit position="west" resizable="fañse" size="200" >					
+					<p:clock />
+				</p:layoutUnit>		
+
+				 <p:layoutUnit position="center" resizable="true" size="100"
+					minSize="200" maxSize="200" >
+					
+					<h1  style="align:center; color:red">Registro de entrada y salida</h1>
+					<p>Colocar su huella digital o ingresar su identificación si está habilitado</p>
+					
+					<h:panelGrid columns="1" border="0">
+						<p:outputLabel  id="lblMessageInfo"  value="INGRESO/SALIDA      00:00:00" />
+						<p:outputLabel id="lblMessageError" style=" color:red" value="No se pudo realizar el registro vuelva a intentar" />
+					</h:panelGrid>					
+				</p:layoutUnit>
+				
+				<!--
+				<p:layoutUnit position="middle right" resizable="true" size="100"
+					minSize="200" maxSize="200" >
+					<p:clock />
+				</p:layoutUnit>
+				
+				<p:layoutUnit position="middle center" resizable="true" size="100"
+					minSize="200" maxSize="200" >
+					<p:clock />
+				</p:layoutUnit> -->
+				
+			</p:layout>
+			
+			
+		<!-- </p:panel> -->
+	</h:form>
+
+
+</h:body>
+</html>

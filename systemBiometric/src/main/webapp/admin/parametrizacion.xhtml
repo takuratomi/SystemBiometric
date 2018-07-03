@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+	<title>Parametrización</title>
+	<meta name="content-type" content="text/html; charset=UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+</h:head>
+<h:body>
+	<ui:composition template="/WEB-INF/templateAdmin/template.xhtml">
+		<ui:define name="body">
+			<f:view>
+
+				<h:form>
+
+					<p:panel id="pnlParametrizar"
+						header="Configuracion Del Ingreso Y Salida De Empleados">
+						<p:growl />
+						<p>
+							Ingrese los datos que desea que el sistema tenga en cuenta, de lo
+							contrario no los ingrese.<BR /> Los campos con (*) son
+							obligatorios.
+						</p>
+
+						<h:panelGrid columns="2">
+							<p:outputLabel value="(*) Hora de Inicio:" />
+							<p:inputText id="txtHInicio"
+								binding="#{parametrizacionVista.txtHInicio}" />
+							<h:panelGrid columns="5">
+								<p:outputLabel value="(*) Hora de Almuerzo:" />
+								<p:outputLabel value=" Desde" />
+								<p:inputText id="txtHAlmInicio"
+									binding="#{parametrizacionVista.txtHAlmInicio}" />
+								<p:outputLabel value=" Hasta" />
+								<p:inputText id="txtHAlmFin"
+									binding="#{parametrizacionVista.txtHAlmFin}" />
+							</h:panelGrid>
+							<p:outputLabel value="" />
+							<p:outputLabel value="(*) Hora de Salida:" />
+							<p:inputText id="txtHFin"
+								binding="#{parametrizacionVista.txtHFin}" />
+							<p:outputLabel value="Tolerancia en las horas: (minutos)" />
+							<p:inputText id="txtToleHras"
+								binding="#{parametrizacionVista.txtToleHras}" />
+
+						</h:panelGrid>
+						<p:commandButton value="Guardar"
+							binding="#{parametrizacionVista.btnGuardar}"
+							action="#{parametrizacionVista.btnCrearAction}"
+							update="pnlParametrizar" />
+
+					</p:panel>
+
+				</h:form>
+
+			</f:view>
+		</ui:define>
+	</ui:composition>
+
+</h:body>
+</html>

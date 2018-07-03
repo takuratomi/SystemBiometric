@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 14/05/2017 01:16:03 PM by Hibernate Tools 5.1.0.Alpha1 -->
+<hibernate-mapping>
+    <class name="co.edu.usbcali.modelo.Parametro" table="parametro" schema="public" optimistic-lock="version">
+        <id name="paraId" type="int">
+            <column name="para_id" />
+            <generator class="assigned" />
+        </id>
+        <property name="valor" type="string">
+            <column name="valor" length="25" not-null="true" />
+        </property>
+        <property name="descripcion" type="string">
+            <column name="descripcion" length="50" not-null="true" />
+        </property>
+        <property name="usuCreador" type="string">
+            <column name="usu_creador" length="30" not-null="true" />
+        </property>
+        <property name="usuModificador" type="string">
+            <column name="usu_modificador" length="30" />
+        </property>
+        <property name="fechaCreador" type="date">
+            <column name="fecha_creador" length="13" not-null="true" />
+        </property>
+        <property name="fechaModificador" type="date">
+            <column name="fecha_modificador" length="13" />
+        </property>
+    </class>
+</hibernate-mapping>

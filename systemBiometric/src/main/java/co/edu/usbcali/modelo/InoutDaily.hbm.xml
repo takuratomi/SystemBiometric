@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 14/05/2017 01:16:03 PM by Hibernate Tools 5.1.0.Alpha1 -->
+<hibernate-mapping>
+    <class name="co.edu.usbcali.modelo.InoutDaily" table="inout_daily" schema="public" optimistic-lock="version">
+        <id name="indaId" type="long">
+            <column name="inda_id" precision="18" scale="0" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="bitacora" class="co.edu.usbcali.modelo.Bitacora" fetch="select">
+            <column name="bita_id" />
+        </many-to-one>
+        <many-to-one name="ingreso" class="co.edu.usbcali.modelo.Ingreso" fetch="select">
+            <column name="ingr_id" />
+        </many-to-one>
+        <many-to-one name="salida" class="co.edu.usbcali.modelo.Salida" fetch="select">
+            <column name="sali_id" />
+        </many-to-one>
+        <property name="observacion" type="string">
+            <column name="observacion" length="100" />
+        </property>
+        <property name="usuCreador" type="string">
+            <column name="usu_creador" length="30" not-null="true" />
+        </property>
+        <property name="usuModificador" type="string">
+            <column name="usu_modificador" length="30" />
+        </property>
+        <property name="fechaCreador" type="date">
+            <column name="fecha_creador" length="13" not-null="true" />
+        </property>
+        <property name="fechaModificador" type="date">
+            <column name="fecha_modificador" length="13" />
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2/04/2017 12:15:42 PM by Hibernate Tools 5.1.0.Alpha1 -->
+<hibernate-mapping>
+
+	<query name="consultarUsuarioPorHuellaIzquierda">
+		<![CDATA[
+			select u from Usuario u, UsuarioHuella u_h, HuellaIzquierda h_i where 
+			u.huusId=u_h.ushuId and u_h.huellaIzquierda.hullId2 = h_i.hullId2  and 
+			h_i.hullId2=:idHuellaIzquierda
+		]]>
+	</query>
+	<query name="consultarUsuarioPorHuellaDerecha">
+		<![CDATA[
+			select u from Usuario u, UsuarioHuella u_h, HuellaDerecha h_d where u.huusId=u_h.ushuId and u_h.huellaDerecha.hudeId = h_d.hudeId 
+			and h_d.hudeId=:idHuellaDerecha
+		]]>
+	</query>
+
+</hibernate-mapping>

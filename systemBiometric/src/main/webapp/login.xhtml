@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+	<title>Login</title>
+	<meta name="content-type" content="text/html; charset=UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1"/>
+	<style type="text/css">
+
+	/* h1{
+	color:red;
+	text-align:center;
+	} */
+	
+	h1 {
+	
+  font-family: "Avant Garde", Avantgarde, "Century Gothic", CenturyGothic, "AppleGothic", sans-serif;
+  font-size: 100px;
+  padding: 80px 50px;
+  text-align: center;
+  text-transform: uppercase;
+  text-rendering: optimizeLegibility;
+    
+	 
+  }
+  .opcion_iluminada {
+    font-size: 32px;
+    /* color:#999; */
+    text-decoration:none;
+    text-shadow: 0px 0px 15px #fff;
+    padding: 10px;
+  }
+  .opcion_iluminada:hover {
+    color:#fff;
+    text-shadow: 0px 0px 15px #fff;
+  }
+
+	</style>
+	<link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="css/style.css" media="screen" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" />	
+
+</h:head>
+
+<h:body>
+
+
+<div style="padding-top: 80px;">
+  <h1 >Sistema Biometrico</h1>
+</div>
+
+
+	<h:form>
+	<p:growl id="msgGrowl" autoUpdate="true" showDetail="false" />
+	
+	<div class="wrap">
+		
+		<p:inputText id="identificacion"  name="j_username"  value="#{loginView.userId}" placeholder="Número identifiación"  /> 
+		<div class="bar">
+			<i></i>
+		</div>		
+		<p:password id="passwordField" name="j_password" value="#{loginView.password}" feedback="false" placeholder="Password" title="Ingrese su password" />
+		
+		<p:commandButton value="Login" action="#{loginView.login}" update="msgGrowl" />
+	</div>
+
+  
+	</h:form>
+</h:body>
+</html>

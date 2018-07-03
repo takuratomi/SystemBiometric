@@ -1,0 +1,75 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 14/05/2017 01:16:03 PM by Hibernate Tools 5.1.0.Alpha1 -->
+<hibernate-mapping>
+    <class name="co.edu.usbcali.modelo.Usuario" table="usuario" schema="public" optimistic-lock="version">
+        <id name="usuCedula" type="long">
+            <column name="usu_cedula" precision="18" scale="0" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="bitacora" class="co.edu.usbcali.modelo.Bitacora" fetch="select">
+            <column name="bita_id" precision="18" scale="0" />
+        </many-to-one>
+        <many-to-one name="fotografia" class="co.edu.usbcali.modelo.Fotografia" fetch="select">
+            <column name="foto_id" precision="18" scale="0" />
+        </many-to-one>
+        <many-to-one name="tipoUsuario" class="co.edu.usbcali.modelo.TipoUsuario" fetch="select">
+            <column name="tusu_id" precision="18" scale="0" />
+        </many-to-one>
+        <property name="usuPrimernombre" type="string">
+            <column name="usu_primernombre" length="20" not-null="true" />
+        </property>
+        <property name="usuSegundonombre" type="string">
+            <column name="usu_segundonombre" length="20" />
+        </property>
+        <property name="usuPrimerapellido" type="string">
+            <column name="usu_primerapellido" length="20" not-null="true" />
+        </property>
+        <property name="usuSegundoapellido" type="string">
+            <column name="usu_segundoapellido" length="20" />
+        </property>
+        <property name="usuPassword" type="string">
+            <column name="usu_password" length="20" />
+        </property>
+        <property name="usuFechnacimiento" type="date">
+            <column name="usu_fechnacimiento" length="13" not-null="true" />
+        </property>
+        <property name="direccion" type="string">
+            <column name="direccion" length="150" />
+        </property>
+        <property name="ciudad" type="string">
+            <column name="ciudad" length="25" />
+        </property>
+        <property name="telefono" type="string">
+            <column name="telefono" length="20" />
+        </property>
+        <property name="huusId" type="java.lang.Long">
+            <column name="huus_id" precision="18" scale="0" />
+        </property>
+        <property name="estado" type="string">
+            <column name="estado" length="2" />
+        </property>
+        <property name="ingresoidentificacion" type="string">
+            <column name="ingresoidentificacion" length="2" />
+        </property>
+        <property name="usuCreador" type="string">
+            <column name="usu_creador" length="30" not-null="true" />
+        </property>
+        <property name="usuModificador" type="string">
+            <column name="usu_modificador" length="30" />
+        </property>
+        <property name="fechaCreador" type="date">
+            <column name="fecha_creador" length="13" not-null="true" />
+        </property>
+        <property name="fechaModificador" type="date">
+            <column name="fecha_modificador" length="13" />
+        </property>
+        <set name="usuarioHuellas" table="usuario_huella" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="usu_cedula" precision="18" scale="0" />
+            </key>
+            <one-to-many class="co.edu.usbcali.modelo.UsuarioHuella" />
+        </set>
+    </class>
+</hibernate-mapping>

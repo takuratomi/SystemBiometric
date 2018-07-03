@@ -1,0 +1,65 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2/04/2017 12:15:42 PM by Hibernate Tools 5.1.0.Alpha1 -->
+<hibernate-mapping>
+
+	<sql-query name="BITA_SEQ">
+		<return-scalar column="nextval" type="java.lang.Long" />
+	  <![CDATA[
+	    SELECT nextval('BITA_SEQ');
+	  ]]>
+	</sql-query>
+
+	<sql-query name="HuelIzq_SEQ">
+		<return-scalar column="nextval" type="java.lang.Long" />
+	  <![CDATA[
+	    SELECT nextval('HuelIzq_SEQ');
+	  ]]>
+	</sql-query>
+
+	<sql-query name="HuelDer_SEQ">
+		<return-scalar column="nextval" type="java.lang.Long" />
+	  <![CDATA[
+	    SELECT nextval('HuelDer_SEQ');
+	  ]]>
+	</sql-query>
+
+	<sql-query name="UsHu_SEQ">
+		<return-scalar column="nextval" type="java.lang.Long" />
+	  <![CDATA[
+	    SELECT nextval('UsHu_SEQ');
+	  ]]>
+	</sql-query>
+
+	<sql-query name="Fotografia_SEQ">
+		<return-scalar column="nextval" type="java.lang.Long" />
+	  <![CDATA[
+	    SELECT nextval('Fotografia_SEQ');
+	  ]]>
+	</sql-query>
+
+	<sql-query name="InDa_SEQ">
+		<return-scalar column="nextval" type="java.lang.Long" />
+	  <![CDATA[
+	    SELECT nextval('InDa_SEQ');
+	  ]]>
+	</sql-query>
+
+	<sql-query name="Salida_SEQ">
+		<return-scalar column="nextval" type="java.lang.Long" />
+	  <![CDATA[
+	    SELECT nextval('Salida_SEQ');
+	  ]]>
+	</sql-query>
+
+	<sql-query name="Ingreso_SEQ">
+		<return-scalar column="nextval" type="java.lang.Long" />
+	  <![CDATA[
+	    SELECT nextval('Ingreso_SEQ');
+	  ]]>
+	</sql-query>
+
+
+
+</hibernate-mapping>

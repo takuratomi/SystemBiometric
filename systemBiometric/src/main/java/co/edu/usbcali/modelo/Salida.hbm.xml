@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 14/05/2017 01:16:03 PM by Hibernate Tools 5.1.0.Alpha1 -->
+<hibernate-mapping>
+    <class name="co.edu.usbcali.modelo.Salida" table="salida" schema="public" optimistic-lock="version">
+        <id name="saliId" type="long">
+            <column name="sali_id" precision="18" scale="0" />
+            <generator class="assigned" />
+        </id>
+        <property name="fechasalida" type="date">
+            <column name="fechasalida" length="13" />
+        </property>
+        <property name="horasalida" type="time">
+            <column name="horasalida" length="15" />
+        </property>
+        <property name="usuCreador" type="string">
+            <column name="usu_creador" length="30" not-null="true" />
+        </property>
+        <property name="usuModificador" type="string">
+            <column name="usu_modificador" length="30" />
+        </property>
+        <property name="fechaCreador" type="date">
+            <column name="fecha_creador" length="13" not-null="true" />
+        </property>
+        <property name="fechaModificador" type="date">
+            <column name="fecha_modificador" length="13" />
+        </property>
+        <set name="inoutDailies" table="inout_daily" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="sali_id" />
+            </key>
+            <one-to-many class="co.edu.usbcali.modelo.InoutDaily" />
+        </set>
+    </class>
+</hibernate-mapping>
